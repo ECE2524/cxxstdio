@@ -80,11 +80,18 @@ int main(int argc, char *argv[]) {
         ifstream ifs(*argv, ifstream::in);
         if (!ifs.good()) {
             errmsg(*argv);
-            //can we continue on an error, or should be break out of
+            //can we continue on an error, or should we break out of
             //the loop?
         } else {
             // Do something with ifs
             // and don't forget to close it!
+            std::string line;
+            while(getline(ifs, line)) {
+                if (VERBOSE)
+                    cerr << "Read line of length " << line.size() << endl;
+                if (!QUIET)
+                    cout << line << endl;
+            }
             ifs.close();
         }
     } 
