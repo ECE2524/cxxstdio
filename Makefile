@@ -7,7 +7,7 @@ prefix ?= /usr/local
 
 OBJS := $(SRCS:.cpp=.o)
 
-pedantic: CFLAGS += -Wextra -pedantic -D_XOPEN_SOURCE=700
+pedantic: CXXFLAGS += -Wextra -pedantic -D_XOPEN_SOURCE=700
 
 all: $(PROGNAME)
 pedantic: $(PROGNAME)
@@ -31,5 +31,6 @@ $(PROGNAME): $(OBJS)
 clean:
 	rm -f *.o *.P $(PROGNAME)
 
+.PHONY: install
 install:
 	cp $(PROGNAME) $(prefix)/bin
